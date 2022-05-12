@@ -30,6 +30,12 @@ class ApplicationController < Sinatra::Base
     new_review = Review.create(params)
     new_review.to_json
   end
+ 
+  delete "/reviews/:id" do 
+    deleted_order = Review.find(params[:id])
+    deleted_order.destroy
+    deleted_order.to_json
+  end
 
   post "/orders" do
     new_order = Order.create(params)
